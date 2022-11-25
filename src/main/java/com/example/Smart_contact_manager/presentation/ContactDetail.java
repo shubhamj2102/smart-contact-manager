@@ -1,11 +1,12 @@
-package com.presentation;
+package com.example.Smart_contact_manager.presentation;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ContactDetails {
+public class ContactDetail {
+
 	private String firstName;
 	private String lastName;
 	private String contactNumber;
