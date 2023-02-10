@@ -2,8 +2,11 @@ package com.example.Smart_contact_manager.presentation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+import com.example.Smart_contact_manager.entities.EAddress;
 import com.example.Smart_contact_manager.entities.EContactDetail;
+import com.example.Smart_contact_manager.entities.EUser;
 
 public final class ContactDataBuilder {
 	private ContactDataBuilder() {
@@ -17,7 +20,25 @@ public final class ContactDataBuilder {
 		eContactDetail.setWork(contactDetails.getWork());
 		eContactDetail.setNotes(contactDetails.getNotes());
 		eContactDetail.setContactNumber(contactDetails.getContactNumber());
+		eContactDetail.setEUser(getUserDetails(contactDetails.getUserDetail()));
 		return eContactDetail;
+	}
+
+	private static EUser getUserDetails(UserDetail userDetail) {
+		var eUser=new EUser();
+
+		if(Objects.isNull(userDetail)){
+			return eUser;
+		}
+
+		eUser.setUserId(userDetail.getUserId());
+		eUser.setUsername(userDetail.getUsername());
+		eUser.setEmail(userDetail.getEmail());
+		eUser.setFirstName(userDetail.getFirstName());
+		eUser.setLastName(userDetail.getLastName());
+		eUser.setEAddress(getAddress(userDetail.getAddress()));
+		eUser.setPassword(userDetail.getPassword());
+		return eUser;
 	}
 
 	public static ContactList with(Iterable<EContactDetail> itList) {
@@ -33,6 +54,9 @@ public final class ContactDataBuilder {
 
 	private static ContactDetail getContactDetails(EContactDetail eContact) {
 		var contactDetails=new ContactDetail();
+		if(Objects.isNull(eContact)){
+			return contactDetails;
+		}
 		contactDetails.setContactNumber(eContact.getContactNumber());
 		contactDetails.setWork(eContact.getWork());
 		contactDetails.setNotes(eContact.getNotes());
@@ -49,5 +73,13 @@ public final class ContactDataBuilder {
 		eContactDetail.setEmail(contactDetail.getEmail());
 		eContactDetail.setFirstName(contactDetail.getFirstName());
 		eContactDetail.setLastName(contactDetail.getLastName());
+	}
+	private static EAddress getAddress(Address address) {
+		var eAddress=new EAddress();
+		if(Objects.isNull(address)){
+			return eAddress;
+		}
+		eAddress.setCity(address.getCity());
+		return eAddress;
 	}
 }

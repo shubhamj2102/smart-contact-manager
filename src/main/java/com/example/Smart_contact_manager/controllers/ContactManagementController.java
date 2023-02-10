@@ -27,8 +27,9 @@ public class ContactManagementController {
 			contactService.addContactDetails(request);
 			return "contact added successfully !";
 		} catch (Exception e) {
-			return "contact already exist !";
+			e.printStackTrace();
 		}
+		return "somthing went wrong";
 	}
 
 	@GetMapping("show-contacts")

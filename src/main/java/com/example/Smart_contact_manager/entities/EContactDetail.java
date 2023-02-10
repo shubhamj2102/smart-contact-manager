@@ -1,9 +1,12 @@
 package com.example.Smart_contact_manager.entities;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -36,4 +39,8 @@ public class EContactDetail {
 
 	@Column(name="notes")
 	private String notes;
+
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private EUser eUser;
 }
