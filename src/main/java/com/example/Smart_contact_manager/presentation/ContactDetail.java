@@ -13,5 +13,5 @@ public class ContactDetail {
 	private String email;
 	private String work;
 	private String notes;
-
+	private UserDetail userDetail;
 }

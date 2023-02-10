@@ -6,10 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.mapping.ToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,7 +31,7 @@ public class EUser {
 	private String lastName;
 
 	@JoinColumn (name="address_id")
-	@ManyToOne
+	@OneToOne
 	private EAddress eAddress;
 
 	@Column(name="email")
