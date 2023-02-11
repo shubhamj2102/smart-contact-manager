@@ -5,7 +5,6 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.Smart_contact_manager.entities.EUser;
 import com.example.Smart_contact_manager.presentation.ContactDataBuilder;
 import com.example.Smart_contact_manager.presentation.ContactDetail;
 import com.example.Smart_contact_manager.presentation.ContactList;

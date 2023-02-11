@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Smart_contact_manager.presentation.UserDetail;
+import com.example.Smart_contact_manager.presentation.requests.LoginRequest;
+import com.example.Smart_contact_manager.presentation.responses.Response;
 import com.example.Smart_contact_manager.services.UserService;
 
 @RestController
@@ -34,14 +36,19 @@ public class UserController {
 	}
 
 	@PostMapping("add-user")
-	public String addUser(@RequestBody UserDetail userDetail) throws Exception {
+	public Response addUser(@RequestBody UserDetail userDetail) throws Exception {
 		userService.addUser(userDetail);
-		return "user added";
+		return new Response("user added");
 	}
 
 	@DeleteMapping ("delete-user")
 	public String deleteUser(@RequestParam String  userId){
 
 		return "user deleted";
+	}
+
+	@PostMapping("/login")
+	public Response loginUser(@RequestBody LoginRequest){
+
 	}
 }
